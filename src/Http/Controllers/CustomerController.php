@@ -114,7 +114,6 @@ class CustomerController extends Controller
         ]);
 
         CustomerModel::find($id)->update([
-            'uuid'      => Uuid::uuid5(Uuid::NAMESPACE_DNS, 'bantenprov.go.id'.date('YmdHis')),
             'nama'      => $request->nama,
             'type'      => $request->type,
             'user_id'   => $request->user_id,
