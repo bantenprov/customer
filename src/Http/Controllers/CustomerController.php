@@ -107,6 +107,22 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
 
+        $request->validate([
+            'nama'      => 'required',
+            'type'      => 'required',
+            'user_id'   => 'required|unique:customers,user_id,'.$id,
+        ]);
+
+        CustomerModel::find($id)->update([
+            'uuid'      => Uuid::uuid5(Uuid::NAMESPACE_DNS, 'bantenprov.go.id'.date('YmdHis')),
+            'nama'      => $request->nama,
+            'type'      => $request->type,
+            'user_id'   => $request->user_id,
+        ]);
+
+        $request->session()->flash('message', 'Successfully modified the customer!');
+
+        return redirect()->route('customer.index');
     }
 
     /**
