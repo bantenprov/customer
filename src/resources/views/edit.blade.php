@@ -14,6 +14,7 @@
           </div>
           <div class="card-body">
             <form action="{{route('customer.update', $customer->id)}}" method="post">
+              <input type="hidden" name="_method" value="PUT">
               {{ csrf_field() }}
 
               <div class="form-group">
