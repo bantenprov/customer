@@ -1,5 +1,5 @@
 <?php
 
-Route::group(['prefix' => 'customer'], function() {
-    Route::get('demo', 'Bantenprov\Customer\Http\Controllers\CustomerController@demo');
+Route::group(['prefix' => '/', 'middleware' => ['web']], function() {
+    Route::resource('customer', 'Bantenprov\Customer\Http\Controllers\CustomerController');
 });

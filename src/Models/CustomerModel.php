@@ -1,33 +1,34 @@
-<?php namespace Bantenprov\Customer\Models;
+<?php
+
+namespace Bantenprov\Customer\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * The CustomerModel class.
- *
- * @package Bantenprov\Customer
- * @author  bantenprov <developer.bantenprov@gmail.com>
- */
-class CustomerModel extends Model
+class CustomerModel extends Model 
 {
-    /**
-    * Table name.
-    *
-    * @var string
-    */
-    protected $table = 'customer';
 
-    /**
-    * The attributes that are mass assignable.
-    *
-    * @var mixed
-    */
-    protected $fillable = [];
+    protected $table = 'customers';
+    public $timestamps = true;
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [];
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+    protected $fillable = [
+        'uuid',
+        'nama',
+        'type',
+        'user_id',
+    ];
+
+    public function getUser()
+    {
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
+
+    /* public function getCustomerRetribusi()
+    {
+        return $this->hasMany('CustomerRetribusi', 'id');
+    } */
+
 }
