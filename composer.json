@@ -32,7 +32,7 @@
                 "Bantenprov\\Customer\\CustomerServiceProvider"
             ],
             "aliases": {                
-                "Customer": "Bantenporv\\Customer\\Facades\\Customer"
+                "Customer": "Bantenprov\\Customer\\Facades\\Customer"
             }
         }
     }
