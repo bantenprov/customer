@@ -36,8 +36,8 @@
               <div class="form-group">
                 <label for="type">Type</label>
                 <select id="type" name="type" class="form-control form-control">
-                  <option value="personal">Personal</option>
-                  <option value="perusahaan">Perusahaan</option>
+                  <option value="personal" {{ ($customer->type == 'personal') ? 'selected' : '' }}>Personal</option>
+                  <option value="perusahaan" {{ ($customer->type == 'perusahaan') ? 'selected' : '' }}>Perusahaan</option>
                 </select>
               </div>
 
