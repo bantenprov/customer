@@ -110,7 +110,7 @@ class CustomerController extends Controller
         $request->validate([
             'nama'      => 'required',
             'type'      => 'required',
-            'user_id'   => 'required|unique:customers,user_id,'.$id,
+            'user_id'   => 'required|unique:customers,id,'.$id,
         ]);
 
         CustomerModel::find($id)->update([
